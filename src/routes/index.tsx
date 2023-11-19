@@ -5,8 +5,8 @@ import { useAuth } from "@/hooks/contexts/useAuth"
 
 import { ROUTE, AppStackParamList } from "@/config/route"
 
-import Home from '@/pages/home/Home';
-import Login from '@/pages/login/Login';
+import Home from '@/screens/home/Home';
+import Login from '@/screens/login/Login';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 

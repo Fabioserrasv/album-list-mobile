@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import { Routes } from './src/components/routes/Routes';
+import { Routes } from './src/routes';
 import { AuthProvider } from './src/contexts/auth-context';
 
 export default function App() {
@@ -10,13 +8,3 @@ export default function App() {
     </AuthProvider>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-});

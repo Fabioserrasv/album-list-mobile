@@ -3,6 +3,7 @@ import { Text, Button } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { AppStackParamList, ROUTE } from '@/config/route';
+
 import { Page } from '@/components/page/Page';
 import { useAuth } from '@/hooks/contexts/useAuth';
 
