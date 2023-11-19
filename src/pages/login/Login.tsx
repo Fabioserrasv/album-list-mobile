@@ -1,26 +1,21 @@
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, Button } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { AppStackParamList, ROUTE } from '../../config/route';
-import { Page } from '../../components/page/Page';
+import { AppStackParamList, ROUTE } from '@/config/route';
+import { Page } from '@/components/page/Page';
+import { useAuth } from '@/hooks/contexts/useAuth';
 
-type RouteName = "/login"
+type RouteName = typeof ROUTE.APP.LOGIN;
 type LoginProps = NativeStackScreenProps<AppStackParamList, RouteName>
 
-export default function Login({ navigation }: LoginProps) {
+export default function Login({ }: LoginProps) {
+  const { login } = useAuth();
+
   return (
     <Page>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Login</Text>
+      <Button onPress={() => login("", "")} title='Logar' />
     </Page>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -3,14 +3,15 @@ import { Container, Title } from './page.styles';
 import { ReactNode } from 'react';
 
 type PageProps = {
+  title?: string;
   children: ReactNode
 }
 
-export function Page({ children }: PageProps) {
+export function Page({ children, title }: PageProps) {
   return (
     <Container>
-      <StatusBar style="dark" />
-      <Title>oi</Title>
+      <StatusBar style='inverted' />
+      {title && <Title>{title}</Title>}
       {children}
     </Container >
   )
