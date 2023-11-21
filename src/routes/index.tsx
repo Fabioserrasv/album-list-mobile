@@ -7,6 +7,7 @@ import { ROUTE, AppStackParamList } from "@/config/route"
 
 import Home from '@/screens/home/Home';
 import Login from '@/screens/login/Login';
+import Register from '@/screens/register/Register';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -28,6 +29,8 @@ export function Routes() {
         ) : (
           <Stack.Group>
             <Stack.Screen name={ROUTE.APP.LOGIN} component={Login} options={OPTIONS_DEFAULT} />
+            <Stack.Screen name={ROUTE.APP.SIGN_UP} component={Register} options={OPTIONS_DEFAULT} />
+            {/* <Stack.Screen name={ROUTE.APP.SIGN_UP} component={() => <></>} options={OPTIONS_DEFAULT} /> */}
           </Stack.Group>
         )}
       </Stack.Navigator>

@@ -13,7 +13,7 @@ export function Page({ children, title }: PageProps) {
       <StatusBar style='inverted' />
       {title && <Title>{title}</Title>}
       {children}
-    </Container >
+    </Container>
   )
 }
 

@@ -39,17 +39,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const signup = useCallback(async (name: string, email: string, password1: string, password2: string) => {
-    try {
-      await AuthenticationService.signup(name, email, password1, password2);
-
-      // navigate(ROUTE.APP.LOGIN);
-    } catch (error: any) {
-      setAuthed(false);
-      // notification.error({
-      // 	message: "Dados incorretos.",
-      // 	description: "Dados incorretos, tente novamente.",
-      // });
-    }
+    await AuthenticationService.signup(name, email, password1, password2);
   }, [])
 
   const login = useCallback(async (username: string, password: string) => {
@@ -58,9 +48,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
 
     try {
-      // const user = await AuthenticationService.login(username, password);
+      const user = await AuthenticationService.login(username, password);
 
-      // setUser(user);
+      setUser(user);
       setAuthed(true);
     } catch (error: any) {
       console.log(error);

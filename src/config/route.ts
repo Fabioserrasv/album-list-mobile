@@ -4,7 +4,6 @@ export const ROUTE = {
   APP: {
     HOME: `/home`,
     SIGN_UP: `/signup`,
-    SIGN_IN: `/sign-in`,
     LOGIN: `/login`,
     PROFILE: `/profile`,
     USER_PROFILE: `/profile/:username`,
@@ -26,6 +25,7 @@ export const DYNAMIC_ROUTE = {
 }
 
 export type AppStackParamList = {
-  "/home": undefined;
+  [ROUTE.APP.HOME]: undefined;
   [ROUTE.APP.LOGIN]: undefined;
+  [ROUTE.APP.SIGN_UP]: undefined;
 };
