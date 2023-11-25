@@ -35,6 +35,7 @@ export type Album = {
   }
 }
 
+console.log(API_LASTFM_KEY)
 const essentialParameters = '&api_key=' + API_LASTFM_KEY + '&format=json';
 
 export async function searchAlbum(album: string): Promise<Album[]> {

@@ -7,9 +7,10 @@ type InputProps<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
   placeholder?: string;
+  type?: "password"
 }
 
-export function Input<T extends FieldValues>({ control, name, placeholder }: InputProps<T>) {
+export function Input<T extends FieldValues>({ control, name, placeholder, type }: InputProps<T>) {
 
   const { field } = useController({
     control,
@@ -21,6 +22,7 @@ export function Input<T extends FieldValues>({ control, name, placeholder }: Inp
       value={field.value}
       onChangeText={field.onChange}
       placeholder={placeholder}
+      secureTextEntry={type === "password"}
     />
   )
 }

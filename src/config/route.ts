@@ -10,7 +10,9 @@ export const ROUTE = {
 
     ALBUM_DETAIL: `/album/:artist/:album`,
     MY_LIST_ALBUMS: `/my-list-albums`,
-    SEARCH_ALBUM: `/search-album`
+    SEARCH_ALBUM: `/search-album`,
+
+    TEST: "/test"
   }
 } as const
 
@@ -28,4 +30,5 @@ export type AppStackParamList = {
   [ROUTE.APP.HOME]: undefined;
   [ROUTE.APP.LOGIN]: undefined;
   [ROUTE.APP.SIGN_UP]: undefined;
+  [ROUTE.APP.TEST]: undefined;
 };

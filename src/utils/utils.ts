@@ -1,6 +1,10 @@
-import ImageDisco from "../assets/images/disco.png";
+import { Asset } from 'expo-asset';
+
 import { AlbumImage } from "../entities/album";
 
+
+const ImageDiscoUri = Asset.fromModule(require('../assets/images/disco.png')).uri;
+
 export function getImageExtraLarge(albumImage: Partial<AlbumImage>): string {
-  return albumImage.large || ImageDisco;
+  return albumImage.large || ImageDiscoUri;
 }

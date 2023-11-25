@@ -1,7 +1,19 @@
 # album-list-mobile
 
-To Do
-
-[] - Password Input
+Geral
 [] - Fazer env funcionar 
-[] - Arrumar card signup
+
+Home
+[x] - Input de pesquisa
+[x] - Listar albuns 
+[] - Arrumar posição do botão
+
+Login
+[] - Arrumar Card
+[] - Arrumar Input
+[] - Arrumat Button
+
+Register
+[] - Arrumar Card
+[] - Arrumar Input
+[] - Arrumat Button

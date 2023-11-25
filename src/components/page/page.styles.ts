@@ -13,3 +13,8 @@ export const Container = styled.View`
 export const Title = styled.Text`
   color: white;
 `
+
+export const Content = styled.View`
+  flex: 1;
+   width: 100%;
+`

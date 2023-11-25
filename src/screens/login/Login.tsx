@@ -45,8 +45,6 @@ export default function Login({ navigation }: LoginProps) {
 
   const { errors } = formState;
 
-  const goToSignup = () => navigation.push(ROUTE.APP.SIGN_UP);
-
   const handleSubmitFormLogin: SubmitHandler<FormLoginData> = useCallback(async (data) => {
     try {
       await login(
@@ -66,7 +64,7 @@ export default function Login({ navigation }: LoginProps) {
           </InputGroup>
 
           <InputGroup label='Senha' error={errors.password?.message}>
-            <Input name="password" control={control} />
+            <Input name="password" type="password" control={control} />
           </InputGroup>
           
           <Link to={ROUTE.APP.SIGN_UP} params={undefined}>

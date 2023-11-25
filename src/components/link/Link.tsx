@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, ReactNode } from 'react';
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 import { AppStackParamList } from "@/config/route"
@@ -6,7 +6,7 @@ import { AppStackParamList } from "@/config/route"
 import { TouchableOpacity, Text } from './link.styles';
 
 type LinkProps<T extends keyof AppStackParamList> = {
-  children: string;
+  children: ReactNode;
   to: T;
   params: AppStackParamList[T]
 }
@@ -16,12 +16,11 @@ export function Link<T extends keyof AppStackParamList>({ children, to, params }
 
   const redirect = useCallback(() => {
     navigate.navigate(to as any, params as any)
-  }, [navigate, to, params])
+  }, [navigate, to, params]);
   
-
   return (
     <TouchableOpacity onPress={redirect}>
-      <Text>{children}</Text>
+      {(typeof children === "string") ? <Text>{children}</Text> : children}
     </TouchableOpacity>
   )
 }

@@ -6,4 +6,6 @@ export const Input = styled(TextInput)`
   border-radius: 5px;
   padding: 2px 5px;
   width: 100%;
+
+  flex: 1;
 `

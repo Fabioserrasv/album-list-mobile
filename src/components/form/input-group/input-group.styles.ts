@@ -1,9 +1,12 @@
+import { Flex, setDinamctlyFlex } from "@/layout/layout";
 import { styled } from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.View<Flex>`
   display: flex;
   flex-direction: column;
   margin: 5px 0px 5px 0px;
+  width: 100%;
+  flex: ${setDinamctlyFlex}
 `
 
 export const Label = styled.Text`

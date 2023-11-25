@@ -81,11 +81,11 @@ export default function Register({ navigation }: LoginProps) {
         </InputGroup>
 
         <InputGroup label='Senha' error={errors.password?.message}>
-          <Input name="password" control={control} />
+          <Input name="password" type="password" control={control} />
         </InputGroup>
 
         <InputGroup label='Repita a senha' error={errors.confirmPassword?.message}>
-          <Input name="confirmPassword" control={control} />
+          <Input name="confirmPassword" type="password" control={control} />
         </InputGroup>
 
         <Button onClick={handleSubmit(handleSubmitFormSignup)} >
