@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { Text } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { AppStackParamList, ROUTE } from "@/config/route";
@@ -7,73 +6,59 @@ import { Link } from "@/components/link/Link";
 
 import { Page } from '@/components/page/Page';
 import { InputGroup } from "@/components/form/input-group/InputGroup";
-import { Input } from "@/components/form/input/Input";
-import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import { LastmService } from "@/services/lastfm-service";
-import { Button } from "@/components/button/Button";
 import { AlbunsFoundContainer, SearchContainer } from "./home.styles";
 import { AlbumHome } from "@/components/album-home/AlbumHome";
 import { Album } from "@/entities/album";
 import { getImageExtraLarge } from "@/utils/utils";
-
+import { InputSearch } from "@/components/input-search/InputSearch";
+import { SkeletonAlbumHome } from "@/components/album-home/loading/SkeletonAlbumHome";
 
 type RouteName = typeof ROUTE.APP.HOME;
-type HomeProps = NativeStackScreenProps<AppStackParamList, RouteName>
-
-const validationFormSearchAlbum = z
-  .object({
-    album: z.string().min(1, { message: "Album name is required." })
-  })
-
-type FormSearchAlbumData = z
-          .infer<typeof validationFormSearchAlbum>;
+type HomeProps = NativeStackScreenProps<AppStackParamList, RouteName>;
 
 export default function Home({ navigation }: HomeProps) {
   const [albums, setAlbums] = useState<Album[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
-
-
-  const { control, handleSubmit, formState } = useForm<FormSearchAlbumData>({
-    resolver: zodResolver(validationFormSearchAlbum),
-    defaultValues: {
-      album: ""
-    },
-  });
-
-  const handleSubmitSearchAlbum: SubmitHandler<FormSearchAlbumData> = useCallback(async (data) => {
+  const handleSearchAlbum = useCallback(async (albumName: string) => {
     try {
-      const albunsFound = await LastmService.searchAlbum(data.album);
+      setIsSearching(true);
+      const albunsFound = await LastmService.searchAlbum(albumName);
       setAlbums(albunsFound);
     } catch (e: any) {
       console.log(e)
+    } finally {
+      setIsSearching(false);
     }
-  }, [])
+  }, []);
 
   return (
     <Page>
       <SearchContainer>
-        <InputGroup label='Search Album' error={''} flex={3}>
-          <Input name="album" control={control} />
+        <InputGroup label='Search Album'>
+          <InputSearch onSearch={handleSearchAlbum} />
         </InputGroup>
-        <Button onClick={handleSubmit(handleSubmitSearchAlbum)} flex={1} >
-          Search
-        </Button >
       </SearchContainer>
+
       <AlbunsFoundContainer>
-        {
+        {isSearching ? (
+          Array(6).fill(null).map((_, index) => (
+            <SkeletonAlbumHome key={index} />
+          ))
+        ) : (
           albums.map((album) => (
-            <Link to={ROUTE.APP.TEST} params={undefined}>
+            <Link key={album.url} to={ROUTE.APP.TEST} params={undefined}>
               <AlbumHome
-                key={album.url}
                 artist={album.artist}
                 name={album.name}
                 img={getImageExtraLarge(album.image)}
               />
             </Link>
           ))
-        }
+        )}
+
       </AlbunsFoundContainer>
     </Page>
   )

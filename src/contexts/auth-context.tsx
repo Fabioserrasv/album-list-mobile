@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useEffect, useState } from "react";
 
 import { User } from "../entities/user";
 import { AuthenticationService } from "../services/authentication-service";
+import PageLoading from "@/screens/page-loading/PageLoading";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -82,8 +83,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={{ authed, signup, user, login, logout }}>
-      {/* {loading ? (<PageLoading />) : children} */}
-      {children}
+      {loading ? (<PageLoading />) : children}
     </AuthContext.Provider>
   );
 };

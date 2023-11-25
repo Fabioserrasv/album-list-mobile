@@ -1,5 +1,4 @@
-import { styled } from "styled-components/native";
-
+import { styled, css } from "styled-components/native";
 
 export const Container = styled.View`
   width: 100%;
@@ -8,13 +7,29 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const Title = styled.Text`
   color: white;
-`
+`;
 
-export const Content = styled.View`
+export type ContentCenter = {
+  contentCenter?: true;
+};
+
+export const Content = styled.View<ContentCenter>`
   flex: 1;
-   width: 100%;
-`
+  width: 100%;
+
+  ${(props) => {
+    if (props.contentCenter) {
+      return css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `;
+    }
+
+    return "";
+  }}
+`;

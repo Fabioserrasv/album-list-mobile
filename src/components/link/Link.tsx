@@ -11,13 +11,13 @@ type LinkProps<T extends keyof AppStackParamList> = {
   params: AppStackParamList[T]
 }
 
-export function Link<T extends keyof AppStackParamList>({ children, to, params }: LinkProps<T>) {
+export function Link<T extends keyof AppStackParamList = keyof AppStackParamList>({ children, to, params }: LinkProps<T>) {
   const navigate = useNavigation<NavigationProp<AppStackParamList>>();
 
   const redirect = useCallback(() => {
     navigate.navigate(to as any, params as any)
   }, [navigate, to, params]);
-  
+
   return (
     <TouchableOpacity onPress={redirect}>
       {(typeof children === "string") ? <Text>{children}</Text> : children}

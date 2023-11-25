@@ -8,12 +8,19 @@ export const SearchContainer = styled.View`
   padding: 10px;
   margin-top: 20px;
   gap: 15px;
-`
-export const AlbunsFoundContainer= styled.ScrollView`
+`;
+export const AlbunsFoundContainer = styled.ScrollView`
   width: 100%;
-  height: 100%;
-  padding: 15%;
+  flex: 1;
+  /* margin: 20px; */
+  padding: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  scroll-padding-top: 10px;
+  scroll-padding-bottom: 10px;
+
   display: flex;
   flex-direction: column;
   /* background-color: black; */
-`
+`;

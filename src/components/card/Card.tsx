@@ -1,7 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { Container, Content, Title } from './card.styles';
 import { ReactNode } from 'react';
-import { Text } from 'react-native';
 
 type CardProps = {
   title: string;

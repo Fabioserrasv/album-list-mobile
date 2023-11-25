@@ -1,7 +1,5 @@
 import { useCallback } from "react"
-import { Text } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useNavigation } from "@react-navigation/native"
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,10 +25,10 @@ const validationFormSignup = z
     }),
     password: z
       .string()
-      .min(6, { message: "Password must be atleast 6 characters" }),
+      .min(8, { message: "Password must be atleast 8 characters" }),
     confirmPassword: z
       .string()
-      .min(6, { message: "Password must be atleast 6 characters" }),
+      .min(8, { message: "Password must be atleast 8 characters" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
@@ -63,15 +61,15 @@ export default function Register({ navigation }: LoginProps) {
         data.confirmPassword
       );
       goToLogin()
-    } catch(e: any) {
+    } catch (e: any) {
       console.log(e)
     }
-    
+
   }, [goToLogin])
 
   return (
-    <Page>
-      <Card title="Sign Up" height={300}>
+    <Page contentCenter>
+      <Card title="Sign Up" height={390}>
         <InputGroup label='Username' error={errors.username?.message}>
           <Input name="username" control={control} />
         </InputGroup>

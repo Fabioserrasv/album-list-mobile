@@ -1,7 +1,7 @@
 import { useCallback } from "react"
-import { Text } from 'react-native';
+
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useNavigation } from "@react-navigation/native"
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,7 +27,7 @@ const validationFormLogin = z
     }),
     password: z
       .string()
-      .min(6, { message: "Password must be atleast 6 characters" }),
+      .min(8, { message: "Password must be atleast 8 characters" }),
   })
 
 type FormLoginData = z.infer<typeof validationFormLogin>;
@@ -57,23 +57,23 @@ export default function Login({ navigation }: LoginProps) {
   }, [])
 
   return (
-    <Page>
-      <Card title="Login" height={250}>
-          <InputGroup label='E-mail' error={errors.email?.message}>
-            <Input name="email" control={control} />
-          </InputGroup>
+    <Page contentCenter>
+      <Card title="Login" height={280}>
+        <InputGroup label='E-mail' error={errors.email?.message}>
+          <Input name="email" control={control} />
+        </InputGroup>
 
-          <InputGroup label='Senha' error={errors.password?.message}>
-            <Input name="password" type="password" control={control} />
-          </InputGroup>
-          
-          <Link to={ROUTE.APP.SIGN_UP} params={undefined}>
-            Register
-          </Link>
+        <InputGroup label='Senha' error={errors.password?.message}>
+          <Input name="password" type="password" control={control} />
+        </InputGroup>
 
-          <Button onClick={handleSubmit(handleSubmitFormLogin)} >
-            Login
-          </Button>
+        <Link to={ROUTE.APP.SIGN_UP} params={undefined}>
+          Register
+        </Link>
+
+        <Button onClick={handleSubmit(handleSubmitFormLogin)} >
+          Login
+        </Button>
       </Card>
     </Page>
   );

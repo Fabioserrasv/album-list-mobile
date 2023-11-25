@@ -1,14 +1,14 @@
-import { Flex } from '@/layout/layout';
+
 import { Button as TouchableOpacity, Text } from './button.styles';
 
 type ButtonProps = {
   children: string;
   onClick(): void;
-} & Flex;
+}
 
-export function Button({ children, onClick, flex }: ButtonProps) {
+export function Button({ children, onClick }: ButtonProps) {
   return (
-    <TouchableOpacity onPress={onClick} flex={flex}>
+    <TouchableOpacity onPress={onClick} >
       <Text>{children}</Text>
     </TouchableOpacity>
   )

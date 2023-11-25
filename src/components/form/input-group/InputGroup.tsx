@@ -1,20 +1,19 @@
-
-import { Flex } from '@/layout/layout';
-import { Container, Label, Error } from './input-group.styles';
 import { ReactNode } from 'react';
+
+import { Container, Label, ErrorText } from './input-group.styles';
 
 type InputGroupProps = {
   label: string;
   children: ReactNode;
   error?: string;
-} & Flex;
+}
 
-export function InputGroup({ label, children, error, flex }: InputGroupProps) {
+export function InputGroup({ label, children, error }: InputGroupProps) {
   return (
-    <Container flex={flex}>
+    <Container>
       <Label>{label}</Label>
       {children}
-      {error && <Error>{error}</Error>}
+      {error && <ErrorText>{error}</ErrorText>}
     </Container>
   )
 }

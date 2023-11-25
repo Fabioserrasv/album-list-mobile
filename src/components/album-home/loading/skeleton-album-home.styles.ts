@@ -1,26 +1,29 @@
 import { styled } from "styled-components/native";
 
-export const Container = styled.ImageBackground`
+export const Container = styled.View`
   width: 100%;
   height: 250px;
-  background-color: black;
-  opacity: 0.7;
+  background-color: #ececec;
   margin-bottom: 5px;
   position: relative;
 `;
 
-export const Artist = styled.Text`
-  font-size: 15px;
-  color: white;
+export const Artist = styled.View`
+  height: 15px;
+  width: 50px;
+  background-color: #dcdcdc;
 `;
 
 export const SongName = styled.Text`
-  font-size: 18px;
+  height: 18px;
   font-weight: bold;
-  color: white;
+
+  width: 150px;
+  background-color: #dcdcdc;
 `;
 export const Info = styled.View`
   position: absolute;
   bottom: 0px;
   padding: 5px;
+  gap: 5px;
 `;

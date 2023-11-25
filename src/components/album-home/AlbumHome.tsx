@@ -1,13 +1,13 @@
-import { Flex } from '@/layout/layout';
+
 import { Artist, Container, Info, SongName } from './album-home.styles';
 
 type AlbumHomeProps = {
   img: string;
   name: string;
   artist: string;
-} & Flex;
+}
 
-export function AlbumHome({ artist, name, img, flex }: AlbumHomeProps) {
+export function AlbumHome({ artist, name, img }: AlbumHomeProps) {
   return (
     <Container source={{ uri: img }}>
       <Info>
