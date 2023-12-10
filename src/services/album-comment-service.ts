@@ -45,7 +45,6 @@ export class AlbumCommentService {
   }
 
   static async setInteraction(commentId: ID, interaction: Interaction) {
-    console.log('chegou')
     await putAlbumCommentLike(Number(commentId), interaction.toLowerCase() as "like" | "deslike")
   }
 }

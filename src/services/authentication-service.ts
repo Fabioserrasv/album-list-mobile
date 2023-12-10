@@ -17,7 +17,8 @@ export class AuthenticationService {
   }
 
   static async login(username: string, password: string): Promise<User> {
-    const user = await userLogin(username, password);
+    await userLogin(username, password);
+    const user = await getUserAuthenticationInformation();
     return convertUserServerToUser(user);
   }
 
@@ -30,14 +31,14 @@ export class AuthenticationService {
     email: string,
     password1: string,
     password2: string
-    ): Promise<User> {
-      const user = await userSignUp(
-        name,
-        email,
-        password1,
-        password2
-      );
+  ): Promise<User> {
+    const user = await userSignUp(
+      name,
+      email,
+      password1,
+      password2
+    );
 
-      return convertUserServerToUser(user);
+    return convertUserServerToUser(user);
   }
 }

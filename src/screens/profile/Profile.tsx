@@ -19,10 +19,18 @@ type ProfileScreenProps = NativeStackScreenProps<AppStackParamList, RouteName>;
 export default function Profile({ }: ProfileScreenProps) {
   const { user: userSession } = useAuth();
 
+  const userSessionName = userSession?.name || "no-auth";
+
   const { data: user, isLoading, isError } = useQuery({
-    queryKey: [userSession!.name],
+    queryKey: [userSessionName],
     keepPreviousData: true,
-    queryFn: () => ProfileService.getProfileInformation(userSession!.name),
+    queryFn: async () => {
+      if (userSessionName === "no-auth") {
+        return;
+      }
+
+      return ProfileService.getProfileInformation(userSessionName);
+    },
   });
 
   if (isError || !user) {
