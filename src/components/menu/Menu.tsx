@@ -10,22 +10,23 @@ export function Menu() {
 
   return (
     <Container>
-      <MenuItemFunction
-        icon='md-checkmark-circle'
-        label='Home'
-        onClick={() => {}}
-      /> 
       <MenuItemNavigate
-        icon='md-thumbs-up-sharp'
+        icon='albums'
         label='Profile'
-        to={ROUTE.APP.TEST}
+        to={ROUTE.APP.PROFILE}
+        params={undefined}
+      />
+      <MenuItemNavigate
+        icon='home'
+        label='Home'
+        to={ROUTE.APP.HOME}
         params={undefined}
       />
       <MenuItemFunction
         icon='md-log-out-sharp'
         label='Log out'
         onClick={logout}
-      /> 
+      />
     </Container>
   )
 }

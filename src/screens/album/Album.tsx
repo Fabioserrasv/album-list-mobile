@@ -40,6 +40,7 @@ export default function Album({ route }: AlbumScreenProps) {
 
   const { data: album, isLoading, isError } = useQuery({
     queryKey: [artist, albumName],
+    keepPreviousData: true,
     queryFn: () => Promise.all([
       LastmService.getAlbumInfo(albumName, artist),
       AlbumService.getScore(albumName, artist),

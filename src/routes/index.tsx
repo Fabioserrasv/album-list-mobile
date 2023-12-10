@@ -9,6 +9,7 @@ import Home from '@/screens/home/Home';
 import Login from '@/screens/login/Login';
 import Register from '@/screens/register/Register';
 import Album from '@/screens/album/Album';
+import Profile from '@/screens/profile/Profile';
 // import Test from '@/screens/test/Test';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -28,6 +29,7 @@ export function Routes() {
           <Stack.Group>
             <Stack.Screen name={ROUTE.APP.HOME} component={Home} options={OPTIONS_DEFAULT} />
             <Stack.Screen name={ROUTE.APP.ALBUM_DETAIL} component={Album} options={OPTIONS_DEFAULT} />
+            <Stack.Screen name={ROUTE.APP.PROFILE} component={Profile} options={OPTIONS_DEFAULT} />
           </Stack.Group>
         ) : (
           <Stack.Group>

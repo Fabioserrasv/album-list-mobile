@@ -8,3 +8,7 @@ const ImageDiscoUri = Asset.fromModule(require('../assets/images/disco.png')).ur
 export function getImageExtraLarge(albumImage: Partial<AlbumImage>): string {
   return albumImage.large || ImageDiscoUri;
 }
+
+export function getImage(albumImage?: string): string {
+  return albumImage || ImageDiscoUri;
+}

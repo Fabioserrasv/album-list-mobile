@@ -8,12 +8,13 @@ import { Page } from '@/components/page/Page';
 import { InputGroup } from "@/components/form/input-group/InputGroup";
 
 import { LastmService } from "@/services/lastfm-service";
-import { AlbunsFoundContainer, SearchContainer } from "./home.styles";
+import { SearchContainer } from "./home.styles";
 import { AlbumHome } from "@/components/album-home/AlbumHome";
 import { Album } from "@/entities/album";
 import { getImageExtraLarge } from "@/utils/utils";
 import { InputSearch } from "@/components/input-search/InputSearch";
 import { SkeletonAlbumHome } from "@/components/album-home/loading/SkeletonAlbumHome";
+import { AlbunsScroll } from "@/components/albuns-scroll/AlbunsFoundContainer";
 
 type RouteName = typeof ROUTE.APP.HOME;
 type HomeProps = NativeStackScreenProps<AppStackParamList, RouteName>;
@@ -42,7 +43,7 @@ export default function Home({ navigation }: HomeProps) {
         </InputGroup>
       </SearchContainer>
 
-      <AlbunsFoundContainer>
+      <AlbunsScroll>
         {isSearching ? (
           Array(6).fill(null).map((_, index) => (
             <SkeletonAlbumHome key={index} />
@@ -66,7 +67,7 @@ export default function Home({ navigation }: HomeProps) {
           ))
         )}
 
-      </AlbunsFoundContainer>
+      </AlbunsScroll>
     </Page>
   )
 }

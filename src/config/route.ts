@@ -35,5 +35,6 @@ export type AppStackParamList = {
     artist: string;
     album: string;
   },
+  [ROUTE.APP.PROFILE]: undefined;
   [ROUTE.APP.TEST]: undefined;
 };
