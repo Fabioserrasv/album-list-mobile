@@ -49,7 +49,14 @@ export default function Home({ navigation }: HomeProps) {
           ))
         ) : (
           albums.map((album) => (
-            <Link key={album.url} to={ROUTE.APP.TEST} params={undefined}>
+            <Link
+              key={album.url}
+              to={ROUTE.APP.ALBUM_DETAIL}
+              params={{
+                album: album.name,
+                artist: album.artist
+              }}
+            >
               <AlbumHome
                 artist={album.artist}
                 name={album.name}

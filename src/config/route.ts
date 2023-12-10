@@ -1,3 +1,4 @@
+import { Album } from "@/entities/album";
 import { API_URL } from "./env"
 
 export const ROUTE = {
@@ -30,5 +31,9 @@ export type AppStackParamList = {
   [ROUTE.APP.HOME]: undefined;
   [ROUTE.APP.LOGIN]: undefined;
   [ROUTE.APP.SIGN_UP]: undefined;
+  [ROUTE.APP.ALBUM_DETAIL]: {
+    artist: string;
+    album: string;
+  },
   [ROUTE.APP.TEST]: undefined;
 };

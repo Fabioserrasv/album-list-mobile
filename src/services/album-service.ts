@@ -62,8 +62,12 @@ export class AlbumService {
     return albums.map(convertAlbumServerToScoreAlbum);
   }
 
-  static async getScore(album: string, artist: string): Promise<number> { 
-    const albumServer = await getAlbumInfo(album, artist);
-    return albumServer.score;
+  static async getScore(album: string, artist: string): Promise<number | null> {
+    try {
+      const albumServer = await getAlbumInfo(album, artist);
+      return albumServer.score;
+    } catch (error) {
+      return null;
+    }
   }
 }

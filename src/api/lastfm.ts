@@ -35,15 +35,14 @@ export type Album = {
   }
 }
 
-console.log(API_LASTFM_KEY)
 const essentialParameters = '&api_key=' + API_LASTFM_KEY + '&format=json';
 
 export async function searchAlbum(album: string): Promise<Album[]> {
-	const response = await apiLastFm.get("?method=album.search&album="+album+essentialParameters);
+  const response = await apiLastFm.get("?method=album.search&album=" + album + essentialParameters);
   return response.data.results.albummatches.album;
 }
 
-export async function getAlbumInfo(album: string, artist: string): Promise<Album>{
+export async function getAlbumInfo(album: string, artist: string): Promise<Album> {
   const response = await apiLastFm.get(`?method=album.getinfo&artist=${artist}&album=${album}${essentialParameters}`)
   return response.data.album
 }

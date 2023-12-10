@@ -8,7 +8,7 @@ export type TrackServer = {
 
 export type AlbumServer = {
   score: number;
-  album:{
+  album: {
     name: string;
     url: string;
     image_url: string;
@@ -21,7 +21,7 @@ export type AlbumServer = {
 }
 
 export async function sendScoreAlbum(data: AlbumServer): Promise<void> {
-	await apiAxios.post("/album/score", data);
+  await apiAxios.post("/album/score", data);
 }
 
 export async function getAlbums(): Promise<AlbumServer[]> {
@@ -29,7 +29,7 @@ export async function getAlbums(): Promise<AlbumServer[]> {
   return response.data;
 }
 
-export async function getAlbumInfo(album: string, artist: string): Promise<AlbumServer>{
+export async function getAlbumInfo(album: string, artist: string): Promise<AlbumServer> {
   const response = await apiAxios.get(`/album/album-info?album=${album}&artist=${artist}`);
   return response.data
 }
